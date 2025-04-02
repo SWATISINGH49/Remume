@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swati Singh | Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a66c2;
+            --secondary-color: #378fe9;
+            --accent-color: #d0e8ff;
+            --light-color: #f3f2ef;
+            --dark-color: #1d2226;
+            --text-color: #000000e6;
+            --text-light: #00000099;
+            --max-width: 1200px;
+            --border-radius: 8px;
+            --box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Background Image */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: white;
+            padding: 3rem 0;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-title i {
+            color: var(--primary-color);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background-color: var(--light-color);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        /* Main Sections */
+        .main-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--light-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.2rem;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .footer-text {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+         /* Contact Form Styles */
+         .contact-form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 1rem auto;
+            max-width: 800px;
+        }
+
+        .contact-form-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            grid-column: span 2;
+            justify-self: center;
+            width: 200px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="bg-image"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Swati Singh</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGQE9iFbH4c9w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725957216150?e=1749081600&v=beta&t=PK8HrvfVlaW83XABYiLkGnwrgBv44jrFsk198-w3bbc" alt="Swati Singh" class="profile-img">
+                <div class="hero-text">
+                    <h1>Swati Singh <span class="badge">Open to work</span></h1>
+                    <p>Full Stack Developer | React Specialist | Laravel Developer</p>
+                    <p>Muzaffarpur, Bihar, India</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#"><i class="fas fa-envelope fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <section class="sidebar-section" id="contact">
+                <h2 class="sidebar-title"><i class="fas fa-address-card"></i> Contact</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Muzaffarpur, Bihar, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>swati.singh@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>linkedin.com/in/swati-singh</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Vivekananda Global University</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h2 class="sidebar-title"><i class="fas fa-code"></i> Skills</h2>
+                <ul class="skills-list">
+                    <li class="skill-item">
+                        <div class="skill-name">
+                            <span>React.js</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </li>
+                    <li class="skill-item">
+                        <div class="skill-name">
+                            <span>Laravel</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </li>
+                    <li class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </li>
+                    <li class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </li>
+                    <li class="skill-item">
+                        <div class="skill-name">
+                            <span>Tailwind CSS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </li>
+                    <li class="skill-item">
+                        <div class="skill-name">
+                            <span>MongoDB</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section">
+                <h2 class="sidebar-title"><i class="fas fa-certificate"></i> Certifications</h2>
+<div class="timeline-item">
+    <div class="timeline-title">
+        <img src="warrior-icon.png" alt="Infosys Warrior" class="cert-icon" title="Infosys Warrior">
+        Infosys Warrior
+    </div>
+    <div class="timeline-date">Aug 2024</div>
+</div>
+<div class="timeline-item">
+    <div class="timeline-title">
+        <img src="ace-icon.png" alt="Infosys Ace" class="cert-icon" title="Infosys Ace">
+        Infosys Ace
+    </div>
+    <div class="timeline-date">Jul 2024</div>
+</div>
+
+<style>
+    .cert-icon {
+        width: 12px;
+        height: 12px;
+        margin-right: 8px;
+        vertical-align: middle;
+        transition: transform 0.3s ease;
+    }
+    
+    .cert-icon:hover {
+        transform: scale(1.5);
+        cursor: pointer;
+    }
+    
+    .timeline-title {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+                
+            </section>
+            <section id="contact" class="contact-form-container">
+                <h2 class="contact-form-title">Contact Me</h2>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </section>
+        </aside>
+
+        <!-- Main Sections -->
+        <div class="main-sections">
+            <section class="section" id="about">
+                <h2 class="section-title"><i class="fas fa-user"></i> About</h2>
+                <p class="about-text">
+                    I am a passionate and dedicated Full Stack Developer with experience in multiple technologies including PHP, Laravel, React.js, Node.js, Tailwind CSS, Bootstrap, MongoDB, and MySQL. I have successfully delivered projects such as a registration and login system for WITS Education, an AIHUB project with advanced React concepts, and a creative Independence Day web project featuring animation and design elements.
+                </p>
+                <p class="about-text">
+                    Additionally, I have experience working as a Software Development Engineer (SDE) at Infocartgroup, where I honed my skills in both backend and frontend development, particularly focusing on Laravel's MVC structure and Eloquent ORM. My project portfolio includes building multi-user blogs, educational management panels, and responsive web designs.
+                </p>
+                <p class="about-text">
+                    Currently, I am expanding my expertise by learning cloud computing, Flutter, and AWS while also continuing my journey in full-stack development through projects and ongoing learning.
+                </p>
+            </section>
+
+            <section class="section" id="experience">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mar 2024 - Present</div>
+                        <h3 class="timeline-title">Student & Self-employed</h3>
+                        <div class="timeline-subtitle">Web Developer</div>
+                        <p class="timeline-description">
+                            Working on personal projects and freelance web development while pursuing education.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - 2024</div>
+                        <h3 class="timeline-title">Software Development Engineer</h3>
+                        <div class="timeline-subtitle">Infocartgroup</div>
+                        <p class="timeline-description">
+                            Developed web applications using Laravel's MVC structure and Eloquent ORM. Worked on both backend and frontend development.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="education">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jul 2023 - Jul 2025</div>
+                        <h3 class="timeline-title">Master of Computer Applications (MCA)</h3>
+                        <div class="timeline-subtitle">Vivekananda Global University</div>
+                        <p class="timeline-description">
+                            Specialization in Computer Science and Web Development.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018 - 2022</div>
+                        <h3 class="timeline-title">Bachelor's Degree</h3>
+                        <div class="timeline-subtitle">M.D.D.M. College, Muzaffarpur</div>
+                        <p class="timeline-description">
+                            Focused on Web Development and Computer Applications.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="projects">
+                <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/600x400?text=WITS+Education" alt="WITS Education" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">WITS Education Platform</h3>
+                            <p class="project-description">
+                                Registration and login system for educational platform with Laravel and Bootstrap.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Laravel</span>
+                                <span class="project-tag">Bootstrap</span>
+                                <span class="project-tag">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/600x400?text=AIHUB" alt="AIHUB" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">AIHUB Project</h3>
+                            <p class="project-description">
+                                Advanced React application with modern UI components and state management.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Tailwind CSS</span>
+                                <span class="project-tag">Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/600x400?text=Independence+Day" alt="Independence Day" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">Independence Day Web Project</h3>
+                            <p class="project-description">
+                                Creative web project featuring animations and patriotic design elements.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML5</span>
+                                <span class="project-tag">CSS3</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2024 Swati Singh. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-text">Open to work for SDE, React Developer and Frontend Developer roles</p>
+        </div>
+    </footer>
+    <script>
+        // Simple form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. I'll contact you at ${email} soon.`);
+            
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
