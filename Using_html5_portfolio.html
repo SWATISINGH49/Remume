@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional profile of a Full Stack Developer specializing in Python and MERN stacks">
+    <title>Full Stack Developer | Python & MERN Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1e40af;
+            --python-color: #3776ab;
+            --javascript-color: #f0db4f;
+            --django-color: #092e20;
+            --laravel-color: #ff2d20;
+            --react-color: #61dafb;
+            --node-color: #68a063;
+            --text-color: #1f2937;
+            --light-text: #6b7280;
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .profile-container {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--python-color), var(--javascript-color));
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-img-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--python-color), var(--javascript-color));
+        }
+
+        .specialization {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .specialty {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .specialty:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .specialty-python {
+            border-top: 4px solid var(--python-color);
+        }
+
+        .specialty-mern {
+            border-top: 4px solid var(--react-color);
+        }
+
+        .specialty-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .specialty-python .specialty-title {
+            color: var(--python-color);
+        }
+
+        .specialty-mern .specialty-title {
+            color: var(--react-color);
+        }
+
+        .tech-stack {
+            margin: 2rem 0;
+        }
+
+        .stack-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .stack-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .stack-item {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .python { background-color: #f0f8ff; color: var(--python-color); border: 1px solid #b3d4ff; }
+        .django { background-color: #e6f5e6; color: var(--django-color); border: 1px solid #a3e0a3; }
+        .laravel { background-color: #ffebee; color: var(--laravel-color); border: 1px solid #ffcdd2; }
+        .javascript { background-color: #fff9e6; color: #d1b000; border: 1px solid #ffe082; }
+        .react { background-color: #e6f7ff; color: var(--react-color); border: 1px solid #b3e5fc; }
+        .node { background-color: #e8f5e9; color: var(--node-color); border: 1px solid #a5d6a7; }
+        .bootstrap { background-color: #f3e5f6; color: #7952b3; border: 1px solid #ce93d8; }
+        .tailwind { background-color: #e0f7fa; color: #06b6d4; border: 1px solid #80deea; }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .linkedin { background-color: #0077b5; }
+        .github { background-color: #333; }
+        .twitter { background-color: #1da1f2; }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .profile-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .specialization {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .specialty {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .profile-img-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .name {
+                font-size: 1.5rem;
+            }
+            
+            .title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-img-container">
+                <img src="https://blog.media.io/images/images2021/cute-good-tiktok-profile-pictures-cute-girl.jpg" 
+                     alt="Profile Picture" 
+                     class="profile-img">
+            </div>
+            
+            <h1 class="name">Swati Singh</h1>
+            <p class="title">Full Stack Developer (Python & MERN)</p>
+            
+            <div class="specialization">
+                <div class="specialty specialty-python">
+                    <h3 class="specialty-title">
+                        <i class="fab fa-python"></i> Python Stack
+                    </h3>
+                    <p>Django | Flask | FastAPI | PostgreSQL</p>
+                </div>
+                
+                <div class="specialty specialty-mern">
+                    <h3 class="specialty-title">
+                        <i class="fab fa-js"></i> MERN Stack
+                    </h3>
+                    <p>MongoDB | Express | React | Node.js</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-stack">
+            <h3 class="stack-title">Technical Skills & Frameworks</h3>
+            <div class="stack-items">
+                <span class="stack-item python"><i class="fab fa-python"></i> Python</span>
+                <span class="stack-item django"><i class="fas fa-leaf"></i> Django</span>
+                <span class="stack-item laravel"><i class="fab fa-laravel"></i> Laravel</span>
+                <span class="stack-item javascript"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="stack-item react"><i class="fab fa-react"></i> React</span>
+                <span class="stack-item node"><i class="fab fa-node-js"></i> Node.js</span>
+                <span class="stack-item bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+                <span class="stack-item tailwind"><i class="fas fa-paint-brush"></i> Tailwind CSS</span>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/swati-singh-aba663270/" 
+               class="linkedin" 
+               aria-label="LinkedIn"
+               target="_blank"
+               rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/SWATISINGH49" 
+               class="github" 
+               aria-label="GitHub"
+               target="_blank"
+               rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        
+        <a href="mailto:swati.singh@example.com" class="contact-btn">Contact Me</a>
+    </main>
+</body>
+</html>
